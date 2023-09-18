@@ -1,6 +1,7 @@
-pymc>=5.8.1
+pymc==5.8.1
 # pandas needs 1.23.3 , higher numpy version can cause this problem:
 # https://stackoverflow.com/questions/70839312/module-numpy-distutils-config-has-no-attribute-blas-opt-info
 numpy==1.23.2
-arviz>=0.16.1
-streamlit>=1.26.0
+arviz==0.16.1
+streamlit==1.26.0
+plotly==5.17.0
