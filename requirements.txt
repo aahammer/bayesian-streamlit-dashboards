@@ -5,3 +5,4 @@ numpy==1.23.2
 arviz==0.16.1
 streamlit==1.26.0
 plotly==5.17.0
+pydantic

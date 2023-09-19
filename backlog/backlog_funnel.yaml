@@ -1,24 +1,23 @@
-Do:
-
-Todo:
-  Clean up and structure funnel app code9b
-  Bug - Dashboard "None" Error on load and reloads
-  Funnel labels are correctly positioned outside or inside
-  Add model tests
-  Add and include module for prior crafting (PriorCraft)
-  Visit App Online
-    Deploy to streamlit community cloud
-  Create an arbitrary single outcome custom funnel within the application
-  Do scenarios on the conversion rates
-  Toggle the target from single outcome chance to total outcome (count)
-
-Done:
-  Add and change initial parameters for the conversion rates
-  See the positive outcome chance for a single deal
-    Fixed three step example
-  Do scenarios on the stage amounts and stage drop outs
-    Conversion Rates will adjust based on past observations
-  See more information inside a funnel graphic
-  Change model and dashboard to new, reduced complexity version
+Clean up and structure funnel app code
+  [] Drag out model
+  Drag out widgets  for input and funnel graphic
+Inquire - do i really need mypy? What does it provide?
+  Especially since the disallow_any_generics does not seem to work (yet)
+Bug - Dashboard "None" Error on load and reloads
+Funnel labels are correctly positioned outside or inside
+Add model tests
+Add and include module for prior crafting (PriorCraft)
+Visit App Online
+  Deploy to streamlit community cloud
+Create an arbitrary single outcome custom funnel within the application
+Do scenarios on the conversion rates
+Toggle the target from single outcome chance to total outcome (count)
+[x] Add and change initial parameters for the conversion rates
+[x] See the positive outcome chance for a single deal
+[x] Fixed three step example
+[x] Do scenarios on the stage amounts and stage drop outs
+[x] Conversion Rates will adjust based on past observations
+[x] See more information inside a funnel graphic
+[x] change model and dashboard to new, reduced complexity version
 
 
