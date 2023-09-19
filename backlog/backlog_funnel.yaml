@@ -1,7 +1,9 @@
 Do:
-  See more information inside a funnel graphic
+
 Todo:
-  Add and change initial parameters for the conversion rates
+  Clean up and structure funnel app code9b
+  Bug - Dashboard "None" Error on load and reloads
+  Funnel labels are correctly positioned outside or inside
   Add model tests
   Add and include module for prior crafting (PriorCraft)
   Visit App Online
@@ -9,11 +11,14 @@ Todo:
   Create an arbitrary single outcome custom funnel within the application
   Do scenarios on the conversion rates
   Toggle the target from single outcome chance to total outcome (count)
-  Clean up and structure funnel app code
+
 Done:
+  Add and change initial parameters for the conversion rates
   See the positive outcome chance for a single deal
     Fixed three step example
   Do scenarios on the stage amounts and stage drop outs
     Conversion Rates will adjust based on past observations
+  See more information inside a funnel graphic
+  Change model and dashboard to new, reduced complexity version
 
 
