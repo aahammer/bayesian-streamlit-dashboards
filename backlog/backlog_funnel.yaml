@@ -1,5 +1,6 @@
 Clean up and structure funnel app code
   [] Drag out model
+    [] Drag out major part of model,sampling stays in dashboard
   Drag out widgets  for input and funnel graphic
 Inquire - do i really need mypy? What does it provide?
   Especially since the disallow_any_generics does not seem to work (yet)

@@ -3,9 +3,18 @@ import pymc as pm
 import numpy as np
 import plotly.graph_objects as go
 
+import models.funnel_model as funnel
+from models.funnel_model import BetaPrior
+
 st.set_page_config(layout="wide")
 
+
 def run_model(num_contacts, num_contact_dropouts, num_meetings, num_meeting_dropouts):
+
+    model = funnel.create(['Contacts', 'Pitches', 'Term Sheets'],
+                          [BetaPrior(**{'alpha': 3., 'beta': 3.}), BetaPrior(**{'alpha': 2., 'beta': 2.})],
+                          prefill=[30, 0, 0]
+                          )
     # add pymc model
     rng = np.random.default_rng(43)
 
@@ -32,16 +41,15 @@ def run_model(num_contacts, num_contact_dropouts, num_meetings, num_meeting_drop
     prior_potential_closures = prior.prior['# of term sheets'].values.flatten()
     result = len(prior_potential_closures[prior_potential_closures == 0]) / 10_000
 
-
     avg_closure_potential = prior_potential_closures.mean()
     avg_c_m = prior.prior['% meeting invitation'].values.flatten().mean()
     avg_m_t = prior.prior['% term sheet offer'].values.flatten().mean()
 
-    values = [100, 100 * avg_c_m,  (1-result)*100]
+    values = [100, 100 * avg_c_m, (1 - result) * 100]
     labels = ["Pending Contacts", "Ongoing Meetings", "Deal Chance"]
     text_values = [f'{num_contacts} pending <br> Conversion ~{avg_c_m:.1%}'
         , f'{num_meetings} ongoing <br> ~{avg_m_t:.1%} conversion'
-        , f'{1-result:.1%} chance <br> to close a deal']
+        , f'{1 - result:.1%} chance <br> to close a deal']
 
     hover_texts = text_values
 
@@ -57,17 +65,18 @@ def run_model(num_contacts, num_contact_dropouts, num_meetings, num_meeting_drop
         orientation='v',
         textfont={"size": 20},
         connector={"fillcolor": 'lightsteelblue'},
-        marker={"color": ["mediumslateblue", "mediumslateblue", f"{'mediumslateblue' if (1-result)*100 > 90 else 'red'}"]}  # Colors for each funnel stage
+        marker={"color": ["mediumslateblue", "mediumslateblue",
+                          f"{'mediumslateblue' if (1 - result) * 100 > 90 else 'red'}"]}  # Colors for each funnel stage
     ))
-
 
     fig.update_layout(
         yaxis={'side': 'right'}
     )
 
-    return 1-result, fig
-def main():
+    return 1 - result, fig
 
+
+def main():
     st.title("Venture Capital Funnel")
 
     st.text("""
@@ -81,7 +90,7 @@ def main():
 
     cols = st.columns([0.15, 0.05, 0.8, 0.05])
 
-    fig=None
+    fig = None
 
     with cols[0]:
         # Get user input
@@ -92,7 +101,6 @@ def main():
 
         deal_chance = 0
 
-
     deal_chance, fig = run_model(num_contacts, num_contact_dropouts, num_meetings, num_meeting_dropouts)
 
     # Display the image in Streamlit
@@ -101,15 +109,13 @@ def main():
 
     }
 
-
     current_height = fig.layout.height or 400
     new_height = 0.8 * current_height
 
-    fig.update_layout(height=new_height, margin=dict(t=20, b=0, l=0, r=0), xaxis=dict( tickfont=dict(size=20)))
-
+    fig.update_layout(height=new_height, margin=dict(t=20, b=0, l=0, r=0), xaxis=dict(tickfont=dict(size=20)))
 
     with cols[2]:
-        #st.image(image, caption="Static Plotly Chart", use_column_width=True)
+        # st.image(image, caption="Static Plotly Chart", use_column_width=True)
         st.plotly_chart(fig, use_container_width=True, config=config)
 
 
