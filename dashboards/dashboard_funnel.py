@@ -16,7 +16,7 @@ def main():
 
     with input_columns[1]:
 
-        with open("./texts/funnel_case_description.md", "r") as file:
+        with open("./dashboards/texts/funnel_case_description.md", "r") as file:
             content = file.read()
             st.markdown(content)
 
@@ -64,14 +64,14 @@ def main():
     st.markdown("[More details on the OKR Analysis Background in Colab](https://colab.research.google.com/drive/16hIZXF7uxrp8gWalPzS_Q7FrL7KIrsqa?usp=sharing)")
 
     col1, col2 = st.columns([0.1, 4])
-    image_github = Image.open('./images/github-mark.png')
+    image_github = Image.open('./dashboards/images/github-mark.png')
     col1.image(image_github, caption='', channels='RGB', output_format='auto', clamp=False, width=24, )
     link = "[Checkout the Code on Github](https://github.com/aahammer/okr-analysis)"
     col2.markdown(link, unsafe_allow_html=True)
 
     col1, col2 = st.columns([0.1, 4])
 
-    image_linkedin = Image.open('./images/LI-In-Bug.png')
+    image_linkedin = Image.open('./dashboards/images/LI-In-Bug.png')
     col1.image(image_linkedin, caption='', channels='RGB', output_format='auto', clamp=False, width=24, )
     link = "[Visit my Linked-In Profile](https://www.linkedin.com/in/andreas-adlichhammer-431a9413a/)"
     col2.markdown(link, unsafe_allow_html=True)
