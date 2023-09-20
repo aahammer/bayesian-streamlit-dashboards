@@ -26,13 +26,13 @@ def main():
     input_columns = st.columns(4)
 
     with input_columns[0]:
-        num_contacts = st.number_input("Active Contacts", value=30)
+        num_contacts = st.number_input("Active Contacts", value=30, min_value=0)
     with input_columns[1]:
-        num_contact_dropouts = st.number_input("Dropped Contacts", value=0)
+        num_contact_dropouts = st.number_input("Dropped Contacts", min_value=0)
     with input_columns[2]:
-        num_meetings = st.number_input("Active Pitches", value=0)
+        num_meetings = st.number_input("Active Pitches", min_value=0)
     with input_columns[3]:
-        num_meeting_dropouts = st.number_input("Dropped Pitches", value=0)
+        num_meeting_dropouts = st.number_input("Dropped Pitches", min_value=0)
 
     updated_priors = funnel.update_priors(
         [BetaPrior(**{'alpha': 3., 'beta': 3.}), BetaPrior(**{'alpha': 2., 'beta': 2.})],

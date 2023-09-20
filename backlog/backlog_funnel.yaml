@@ -1,7 +1,6 @@
 [] Visit App Online
   [] Deploy to streamlit community cloud
 Improved performance when clicking fast on input values
-[] Bug - Negative Input Values Break the dashboard
 Inquire - do i really need mypy? What does it provide?
   Especially since the disallow_any_generics does not seem to work (yet)
 Add model validation tests
@@ -23,6 +22,7 @@ Toggle the target from single outcome chance to total outcome (count)
   [x] Drag out widgets  for input and funnel graphic
 [x] Bug - Dashboard "None" Error on load and reloads
   removed as part of the clean up
+[x] Bug - Negative Input Values Break the dashboard
 
 
 
