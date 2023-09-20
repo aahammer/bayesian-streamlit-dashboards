@@ -1,17 +1,12 @@
-Clean up and structure funnel app code
-  [] Drag out model
-    [] Drag out major part of model,sampling stays in dashboard
-  Drag out widgets  for input and funnel graphic
+[] Visit App Online
+  [] Deploy to streamlit community cloud
 Inquire - do i really need mypy? What does it provide?
   Especially since the disallow_any_generics does not seem to work (yet)
-Bug - Dashboard "None" Error on load and reloads
-Funnel labels are correctly positioned outside or inside
-Add model tests
+Add model validation tests
 Add and include module for prior crafting (PriorCraft)
-Visit App Online
-  Deploy to streamlit community cloud
-Create an arbitrary single outcome custom funnel within the application
-Do scenarios on the conversion rates
+[] Create an arbitrary single outcome custom funnel within the application
+  [x] arbitrary model
+  Refactor funnel widget to be as generic as the model
 Toggle the target from single outcome chance to total outcome (count)
 [x] Add and change initial parameters for the conversion rates
 [x] See the positive outcome chance for a single deal
@@ -20,5 +15,12 @@ Toggle the target from single outcome chance to total outcome (count)
 [x] Conversion Rates will adjust based on past observations
 [x] See more information inside a funnel graphic
 [x] change model and dashboard to new, reduced complexity version
+[x] Clean up and structure funnel app code
+  [x] Drag out model
+  [x] Drag out major part of model,sampling stays in dashboard
+  [x] Drag out widgets  for input and funnel graphic
+[x] Bug - Dashboard "None" Error on load and reloads
+  removed as part of the clean up
+
 
 

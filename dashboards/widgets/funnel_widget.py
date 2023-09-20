@@ -4,9 +4,9 @@ def create( num, avg, deal_chance):
 
 
     values = [100, 100 * avg[0], deal_chance * 100]
-    labels = ["Pending Contacts", "Ongoing Meetings", "Deal Chance"]
-    text_values = [f'{num[0]} pending <br> Conversion ~{avg[0]:.1%}'
-        , f'{num[1]} ongoing <br> ~{avg[1]:.1%} conversion'
+    labels = ["Active Contacts", "Active Pitches", "Deal Chance"]
+    text_values = [f'{num[0]} active <br> Conversion ~{avg[0]:.1%}'
+        , f'{num[1]} active <br> ~{avg[1]:.1%} conversion'
         , f'{deal_chance:.1%} chance <br> to close a deal']
 
     hover_texts = text_values
