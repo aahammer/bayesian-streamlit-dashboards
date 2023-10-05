@@ -4,4 +4,7 @@ git pull origin main
 
 python setup.py sdist bdist_wheel --dist-dir dist/
 
+pip install ./dist/dashboard_funnel-1.0-py3-none-any.whl
+
+
 pip freeze | grep pymc
