@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="dashboard_funnel",
-    version="1.0",
+    version="1.1",
     packages=["models"],
     install_requires=[
         "pydantic>=2.3",

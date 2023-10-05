@@ -8,4 +8,4 @@ plotly==5.17.0
 pydantic==2.3.0
 # wheel needed for deploy on streamlit
 # built with python setup.py sdist bdist_wheel --dist-dir dist/
-./dist/dashboard_funnel-1.0-py3-none-any.whl
+./dist/dashboard_funnel-1.1-py3-none-any.whl

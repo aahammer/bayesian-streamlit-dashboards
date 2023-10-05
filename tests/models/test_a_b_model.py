@@ -9,10 +9,10 @@ import math
 
 
 @pytest.mark.parametrize('priors', [
-     [BetaPrior(**{'alpha': 0, 'beta': 0})],
-     [BetaPrior(**{'alpha': 0, 'beta': 0}), BetaPrior(**{'alpha': 0, 'beta': 0})] ,
-     [BetaPrior(**{'alpha': 0, 'beta': 0})]*23,
-     [BetaPrior(**{'alpha': 0, 'beta': 0})]*100
+     [BetaPrior(**{'alpha': 1, 'beta': 1})],
+     [BetaPrior(**{'alpha': 1, 'beta': 1}), BetaPrior(**{'alpha': 1, 'beta': 1})] ,
+     [BetaPrior(**{'alpha': 1, 'beta': 1})]*23,
+     [BetaPrior(**{'alpha': 1, 'beta': 1})]*100
 ])
 
 def test_create(priors):
@@ -27,15 +27,15 @@ def test_create(priors):
 
 @pytest.mark.parametrize('control, variants, effects', [
      [
-         [0]*10,
-         [[0]*5+[1]*5],
-         [{'lift':0.5, 'confidence':0.5}]
+         [0.1] * 10,
+         [[0.2]*10],
+         [{'lift':1.0, 'confidence':1.0}]
      ],
-    [
-        [0.1] * 7 + [0.2] * 3,
-        [[0.15] * 10],
-        [{'lift': 0.02, 'confidence': 0.7}]
-    ],
+     [
+        [0.1] * 4 + [0.2] * 2,
+        [[0.15] * 6],
+        [{'lift': 0.25, 'confidence': 2/3}]
+     ],
 
 ])
 def test_evaluate_variants(control, variants, effects):
@@ -44,7 +44,6 @@ def test_evaluate_variants(control, variants, effects):
     variants = numpy.array(variants)
 
     results = evaluate_variants(control, variants)
-
 
     for i, e in enumerate(effects):
          assert(math.isclose(results[i].lift, e['lift']))

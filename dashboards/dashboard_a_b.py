@@ -11,23 +11,23 @@ from models.types import BetaPrior
 
 # Check if 'variants' is already in the session state, if not initialize it
 if 'variants' not in st.session_state:
-    st.session_state.variants = [{"conversions": 6, "non_conversions": 94} for _ in range(10)]
+    st.session_state.variants = [{"conversions": 550, "non_conversions": 9450} for _ in range(5)]
 if 'control' not in st.session_state:
-    st.session_state.control = {"conversions": 500, "non_conversions": 9500}
+    st.session_state.control = {"conversions": 5000, "non_conversions": 95000}
 
 # Introduction Text
-st.title('A/B Testing Dashboard')
+st.title('Multivariate A/B Testing Dashboard')
 
 st.subheader(f"Control Variant")
 col1, col2 = st.columns(2)
-st.session_state.control['conversion'] = col1.number_input(
+st.session_state.control['conversions'] = col1.number_input(
     f'Observed number of conversions',
     min_value=1,
     value=st.session_state.control["conversions"],
     key=f"conversions_control",
     format='%d'
 )
-st.session_state.control['non_conversion'] = col2.number_input(
+st.session_state.control['non_conversions'] = col2.number_input(
     f'Observed number of non-conversions',
     min_value=1,
     value=st.session_state.control["non_conversions"],
@@ -35,12 +35,16 @@ st.session_state.control['non_conversion'] = col2.number_input(
     format='%d'
 )
 
+control_conversion_rate = st.session_state.control['conversions'] / (
+            st.session_state.control['conversions'] + st.session_state.control['non_conversions'])
+prior_alpha = (control_conversion_rate * 100)
+prior_beta = ((1 - control_conversion_rate) * 100)
+st.caption(f'* Alpha and Beta Priors for the Variants are set to {prior_alpha:.4} and {prior_beta:.4}' )
+
 
 st.markdown("---")
 
 selected_variants = st.slider("Number of variants", min_value=1, max_value=5, value=1, step=1)
-
-
 
 
 col1, col2, _= st.columns([0.25,0.25,0.5])
@@ -72,9 +76,9 @@ if st.button('Evaluate Variants', type="primary"):
     variant_priors = []
 
     for i in range(selected_variants):
-        variant_priors.append(BetaPrior(**{'alpha': st.session_state.variants[i]['conversions'] + 1, 'beta': st.session_state.variants[i]['non_conversions'] + 20}))
+        variant_priors.append(BetaPrior(**{'alpha': st.session_state.variants[i]['conversions'] + prior_alpha, 'beta': st.session_state.variants[i]['non_conversions'] + prior_beta}))
 
-    model = a_b.create( [BetaPrior(**{'alpha':st.session_state.control['conversion'], 'beta':st.session_state.control['non_conversion']})] + variant_priors)
+    model = a_b.create( [BetaPrior(**{'alpha':st.session_state.control['conversions'], 'beta':st.session_state.control['non_conversions']})] + variant_priors)
     with model:
         prior = pymc.sample_prior_predictive(samples=10_000, random_seed=43)
 
@@ -91,5 +95,9 @@ if st.button('Evaluate Variants', type="primary"):
     # streamlit does not support pandas format settings
     df['lift'] = (df['lift'] * 100).apply('{:.2f}%'.format)
     df['confidence'] = (df['confidence'] * 100).apply('{:.2f}%'.format)
+    df.columns = ['Mean Lift Over Control Variant', 'Confidence in Outperforming Control Variant']
+
 
     st.table(df)
+
+    st.caption('* small deviations between equal inputs are normal, because of the not 100% deterministic Monte-Carlo Sampling')

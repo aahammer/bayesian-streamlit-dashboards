@@ -35,7 +35,7 @@ def evaluate_variants(control: NDArray[numpy.float64], variants: NDArray[numpy.f
 
     effects = []
     for variant in variants:
-        lift = variant.mean() - control.mean()
+        lift = ((variant - control) / control).mean()
         confidence = numpy.array([variant - control > 0]).mean()
         effects.append(Effect(**{'lift': lift, 'confidence': confidence}))
 
