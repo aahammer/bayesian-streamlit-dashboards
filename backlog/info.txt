@@ -1,0 +1,7 @@
+streamlit run xyz
+
+git pull origin main
+
+python setup.py sdist bdist_wheel --dist-dir dist/
+
+pip freeze | grep pymc

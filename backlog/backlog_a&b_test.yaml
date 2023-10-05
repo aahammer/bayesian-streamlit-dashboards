@@ -1,0 +1,5 @@
+Create A&B Testing Dashboard 
+  Create Simple Model
+    Given a current conversion rate of 5 percent
+    When i provide the number of successes and failures of my alternative version
+    Then i see the lift to my current version and the confidence in this lift
