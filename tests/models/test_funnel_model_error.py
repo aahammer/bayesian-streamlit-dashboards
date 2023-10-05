@@ -2,8 +2,8 @@ import pytest
 from pydantic import ValidationError
 
 # system under test
-from models.funnel_model import create, BetaPrior
-
+from models.funnel_model import create
+from models.types import BetaPrior
 
 def test_create_error_to_many_steps():
     steps = ['A', 'B', 'C', 'D']

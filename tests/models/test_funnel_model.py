@@ -1,7 +1,8 @@
 import pytest
 
 # system under test
-from models.funnel_model import create, update_priors, BetaPrior, StepStatus
+from models.funnel_model import create, update_priors, StepStatus
+from models.types import BetaPrior
 
 # support libraries
 import pymc

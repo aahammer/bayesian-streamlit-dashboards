@@ -1,15 +1,8 @@
 from typing import List, Tuple
-from pydantic import BaseModel, confloat, conint
+from pydantic import BaseModel, conint
 import pymc
 
-
-class BetaPrior(BaseModel):
-    """
-    Represents the prior knowledge about a beta distribution.
-    """
-    alpha: confloat(ge=0)
-    beta: confloat(ge=0)
-
+from .types import BetaPrior
 
 class StepStatus(BaseModel):
     """
