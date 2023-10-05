@@ -4,7 +4,8 @@ import numpy
 from PIL import Image
 
 import models.funnel_model as funnel
-from models.funnel_model import BetaPrior, StepStatus
+from models.types import BetaPrior
+from models.funnel_model import StepStatus
 import widgets.funnel_widget as fw
 
 
