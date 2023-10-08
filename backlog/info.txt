@@ -1,6 +1,7 @@
 streamlit run xyz
 
 git pull origin main
+git push origin main
 
 python setup.py sdist bdist_wheel --dist-dir dist/
 

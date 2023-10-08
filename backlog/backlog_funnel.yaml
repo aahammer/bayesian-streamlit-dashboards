@@ -1,5 +1,3 @@
-[] Visit App Online
-  [] Deploy to streamlit community cloud
 Improved performance when clicking fast on input values
 Inquire - do i really need mypy? What does it provide?
   Especially since the disallow_any_generics does not seem to work (yet)
@@ -23,6 +21,8 @@ Toggle the target from single outcome chance to total outcome (count)
 [x] Bug - Dashboard "None" Error on load and reloads
   removed as part of the clean up
 [x] Bug - Negative Input Values Break the dashboard
+[x] Visit App Online
+  [x] Deploy to streamlit community cloud
 
 
 

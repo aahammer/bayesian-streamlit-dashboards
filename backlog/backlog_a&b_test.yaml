@@ -1,5 +1,6 @@
-Create A&B Testing Dashboard 
-  Create Simple Model
-    Given a current conversion rate of 5 percent
-    When i provide the number of successes and failures of my alternative version
-    Then i see the lift to my current version and the confidence in this lift
+Conversion Rate, Total Obs can be entered instead of just total success, total fails
+[x]Create A&B Testing Dashboard 
+  [x] Create Simple Model
+    [x] Given a current conversion rate of 5 percent
+    [x] When i provide the number of successes and failures of my alternative version
+    [x] Then i see the lift to my current version and the confidence in this lift

@@ -1,0 +1,3 @@
+Bug: BetaPrior Tests on Funnel do not work
+  Changed BetaPrior Alpha/Beta to be > 0. Needs to be reflected in tests
+Add Info logging
